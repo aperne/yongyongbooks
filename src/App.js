@@ -12,7 +12,7 @@ function App() {
     // Data for the first graph
     const data1 = {
       nodes: [
-        { id: 1, label: "January, 25", shape:"circle", font: { color: "#FFF", size: 30, bold: true }, x: 0, y: 0, fixed: { x: true, y: true }, hidden:true },
+        { id: 1, label: "January, 25", shape:"circle", font: { color: "#FFF", size: 30, bold: true }, x: 0, y: 0, fixed: { x: true, y: true }, hidden:false },
         { id: 2, label: "SOC", shape:"circle" },
         { id: 3, label: "ECO", shape:"circle" },
         { id: 16, label: "PER", shape:"circle" },
@@ -33,6 +33,9 @@ function App() {
         { id: 19, label: "The Way of work"},
       ],
       edges: [
+        { from: 1, to: 2 },
+        { from: 1, to: 3 },
+        { from: 1, to: 16 },
         { from: 2, to: 4 }, // SCO
         { from: 2, to: 9 },
         { from: 2, to: 10},
@@ -57,7 +60,7 @@ const options = {
     font: {
       color: "#fff",  // Set the text color to white
       family: "Noto Sans KR",  // Set the font family
-      size: 16,  // Set the font size
+      size: 19,  // Set the font size
     },
     color: { background: "black" },  // Set node background color to black
     widthConstraint: { minimum: 100 },  // Set a global minimum width for all nodes
