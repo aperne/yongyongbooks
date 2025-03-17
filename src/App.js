@@ -1,36 +1,36 @@
 import React, { useEffect, useRef } from "react";
 import { Network } from "vis-network";
-import "vis-network/styles/vis-network.css";  // Import network styles
+import "vis-network/styles/vis-network.css";
 
 function App() {
-  // Create two refs for the networks
-  const networkRef1 = useRef(null);  // First graph
+  const networkRef1 = useRef(null);
 
   useEffect(() => {
-    const container1 = networkRef1.current;  // Container for the first network
+    const container1 = networkRef1.current;
 
-    // Data for the first graph
     const data1 = {
       nodes: [
-        { id: 1, label: "2025", shape:"circle", font: { color: "#FFF", size: 40, bold: true }, x: 0, y: 0, fixed: { x: true, y: true }, hidden:false },
-        { id: 2, label: "SOCIOLOGY", shape:"circle", color: { background: "green" } },
-        { id: 3, label: "ECONOMICS", shape:"circle", color: { background: "orange" } },
-        { id: 16, label: "MANAGEMENT", shape:"circle", color: { background: "brown" } },
+        { id: 1, label: "2025", shape:"circle", font: { color: "#FFF", size: 40, bold: true }, x: 0, y: 0, fixed: { x: true, y: true }, hidden:true },
+        { id: 2, label: "SOCIOLOGY", shape:"circle", color: { background: "#008299" } },
+        { id: 3, label: "ECONOMICS", shape:"circle", color: { background: "#6F2B00" } },
+        { id: 16, label: "MANAGEMENT", shape:"circle", color: { background: "#980000" } },
+        { id: 20, label: "UNREAD", shape:"circle", color: { background: "#303030" } },
         { id: 4, label: "Justice: What's the Right Thing to Do?\nMichael J. Sandel" },
         { id: 5, label: "The Millionaire Fastlane\nMichael Jay DeMarco" },
         { id: 6, label: "Capitalism and Freedom\nMilton Friedman"},
-        { id: 7, label: "Economics: The User's Guide"},
-        { id: 8, label: "Kick the Ladder"},
+        { id: 7, label: "Economics: The User's Guide\nHa-Joon Chang"},
+        { id: 8, label: "Kicking Away the Ladder\nHa-Joon Chang"},
         { id: 9, label: "The Sense of Facts"},
         { id: 10, label: "A Wide and Shallow Knowledge for Intellectual Conversation"},
-        { id: 11, label: "What Is Right?"},
-        { id: 12, label: "The Origins of Totalitarianism"},
-        { id: 13, label: "Eichmann in Jerusalem\n(Hannah Arendt)"},
+        { id: 11, label: "RIGHT / WRONG\nJuan Enriquez"},
+        { id: 12, label: "The Origins of Totalitarianism\nHannah Arendt"},
+        { id: 13, label: "Eichmann in Jerusalem\nHannah Arendt"},
         { id: 14, label: "The Voice of Primo Levi"},
         { id: 15, label: "The Constitution of Liberty"},
-        { id: 17, label: "Sayno's Teachings"},
+        { id: 17, label: "Sayno's Teachings\nSAYNO"},
         { id: 18, label: "The Art of Expression"},
         { id: 19, label: "The Way of work"},
+        { id: 21, label: "THE SECRETS OF HIGHLY SUCCESSFUL GROUPS"}
       ],
       edges: [
         { from: 1, to: 2 },
@@ -51,7 +51,8 @@ function App() {
         { from: 16, to: 17 }, // MANAGEMENT
         { from: 16, to: 18 },
         { from: 16, to: 19 },
-        { from: 2, to: 20},
+        { from: 1, to: 20},
+        { from: 20, to: 21},
       ],
     };
 
@@ -73,6 +74,7 @@ function App() {
     updateNodeColors(data1.nodes, data1.edges, 2); // id 2 (SOCIOLOGY)
     updateNodeColors(data1.nodes, data1.edges, 3); // id 3 (ECONOMICS)
     updateNodeColors(data1.nodes, data1.edges, 16); // id 16 (MANAGEMENT)
+    updateNodeColors(data1.nodes, data1.edges, 20); // id 20 (UNREAD)
 
     const options = {
       nodes: {
@@ -99,7 +101,7 @@ function App() {
       physics: {
         enabled: true,  // Enable physics simulation for node movement
         barnesHut: {
-          gravitationalConstant: -25000,  // Gravitational constant for repelling nodes
+          gravitationalConstant: -15000,  // Gravitational constant for repelling nodes
           springConstant: 0.05,  // Spring constant for attracting nodes
           springLength: 300,  // Distance between nodes
         },
